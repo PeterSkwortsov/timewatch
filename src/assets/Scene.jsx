@@ -73,7 +73,6 @@ export default function Experience({ progress }) {
         
       />
       <Watch  />
-      <axesHelper args={[500]} />
       
     </>
   );
