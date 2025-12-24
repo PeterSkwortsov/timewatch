@@ -28,17 +28,17 @@ function App() {
   const slides = [
     {
       id: 1,
-      image: "../public/time1.jpeg",
+      image: "/time1.jpeg",
       
     },
     {
       id: 2,
-      image: "../public/time2.jpeg",
+      image: "/time2.jpeg",
       
     },
     {
       id: 3,
-      image: "../public/time3.jpeg",
+      image: "/time3.jpeg",
       
     },
   ];
