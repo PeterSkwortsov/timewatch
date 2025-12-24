@@ -22,6 +22,51 @@ if (typeof window !== "undefined") {
 }
 
 function App() {
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      id: 1,
+      image: "../public/time1.jpeg",
+      
+    },
+    {
+      id: 2,
+      image: "../public/time2.jpeg",
+      
+    },
+    {
+      id: 3,
+      image: "../public/time3.jpeg",
+      
+    },
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
+  // Автопрокрутка (опционально)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [currentSlide])
+
+
+
+
   const mainRef = useRef(null);
   const sceneRef = useRef(null);
   const [progress, setProgress] = useState(0);
@@ -41,13 +86,14 @@ function App() {
           },
         },
       })
-      .to(sceneRef.current, { x: "-25vw", y: "100vh", ease: "none" })
-      .to(sceneRef.current, { x: "25vw", y: "200vh", ease: "none" })
-      .to(sceneRef.current, { x: "-25vw", y: "300vh", ease: "none" })
-      .to(sceneRef.current, { x: "25vw", y: "400vh", ease: "none" })
-      .to(sceneRef.current, { x: "-25vw", y: "500vh", ease: "none" })
-      .to(sceneRef.current, { x: "25vw", y: "600vh", ease: "none" })
-      .to(sceneRef.current, { x: "-25vw", y: "600vh", ease: "none" })
+      .to(sceneRef.current, { x: "25vw", y: "100vh", ease: "none" })
+      .to(sceneRef.current, { x: "-25vw", y: "250vh", ease: "none" })
+      .to(sceneRef.current, { x: "25vw", y: "350vh", ease: "none" })
+      .to(sceneRef.current, { x: "-25vw", y: "450vh", ease: "none" })
+      .to(sceneRef.current, { x: "25vw", y: "550vh", ease: "none" })
+      .to(sceneRef.current, { x: "-25vw", y: "650vh", ease: "none" })
+      .to(sceneRef.current, { x: "25vw", y: "800vh", ease: "none" })
+      // .to(sceneRef.current, { x: "-25vw", y: "600vh", ease: "none" })
 
     // Анимация фич при скролле
     featuresRef.current.forEach((feature, index) => {
@@ -118,7 +164,7 @@ function App() {
     {
       icon: <FaMobileAlt className="text-green-500" />,
       title: "Интеграция",
-      description: "Полная синхронизация с экосистемой Apple, быстрые ответы",
+      description: "Полная синхронизация с экосистемой Eon Watch, быстрые ответы",
     },
     {
       icon: <WiThermometer className="text-pink-500" />,
@@ -148,16 +194,13 @@ function App() {
 
           <div className="relative z-10 text-center px-4 max-w-6xl">
             <h1 className="text-white text-7xl md:text-9xl font-bold mb-6 tracking-tighter">
-              Apple Watch
-              <span className="block text-3xl md:text-5xl font-light mt-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Series 9
-              </span>
+              Eon Watch
             </h1>
 
             <p className="text-gray-300 text-lg md:text-xl font-light mt-8 max-w-3xl mx-auto leading-relaxed backdrop-blur-sm bg-black/30 p-6 rounded-2xl border border-white/10">
-              Революция на вашем запястье. Уведомления об апноэ во сне, более
-              быстрая зарядка, функция определения глубины и температуры воды, и
-              совершенно новый уровень взаимодействия.
+              Революция на вашем запястье. Синхронизация уведомлений, быстрая
+              зарядка, функция определения глубины и температуры воды.
+              Совершенно новый уровень взаимодействия.
             </p>
 
             <div className="mt-12 flex flex-col md:flex-row gap-4 justify-center">
@@ -180,13 +223,12 @@ function App() {
             <div className="text-white/60">↓</div>
           </div>
         </section>
-
         {/* Features Grid */}
         <section className="py-20 px-4 max-w-7xl mx-auto">
-          <h2 className="text-white text-5xl font-bold text-center mb-4">
+          <h2 className="text-white text-4xl relative font-bold text-center mb-4">
             Почему именно эти часы?
           </h2>
-          <p className="text-gray-400 text-center text-xl mb-16 max-w-3xl mx-auto">
+          <p className="text-gray-400 relative text-center text-xl mb-16 max-w-3xl mx-auto">
             8 ключевых преимуществ, которые меняют представление о носимых
             устройствах
           </p>
@@ -200,7 +242,7 @@ function App() {
                 transform hover:-translate-y-2`}
               >
                 <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-white text-xl font-bold mb-3">
+                <h3 className="text-white text-md font-bold mb-3">
                   {feature.title}
                 </h3>
                 <p className="text-gray-300">{feature.description}</p>
@@ -250,15 +292,119 @@ function App() {
                 </ul>
                 <div className="mt-8 pt-8 border-t border-white/10">
                   <p className="text-gray-400 text-sm">
-                    *По данным исследований пользователей Apple Watch за 2024
-                    год
+                    *По данным исследований пользователей Eon Watch за 2024 год
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <div className="max-w-4xl mx-auto p-4">
+          <div className="relative overflow-hidden rounded-xl shadow-lg">
+            {/* Контейнер слайдов */}
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {slides.map((slide) => (
+                <div key={slide.id} className="w-full flex-shrink-0">
+                  <div className="relative h-96 md:h-[500px]">
+                    <img
+                      src={slide.image}
+                      alt={slide.title}
+                      className="w-full h-full object-cover"
+                    />
+                   
+                  </div>
+                </div>
+              ))}
+            </div>
 
+            {/* Кнопки навигации */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors duration-200"
+              aria-label="Предыдущий слайд"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors duration-200"
+              aria-label="Следующий слайд"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+
+            {/* Индикаторы */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-3">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentSlide
+                      ? "bg-white w-8"
+                      : "bg-white/50 hover:bg-white/80"
+                  }`}
+                  aria-label={`Перейти к слайду ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Счетчик слайдов */}
+            <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+              {currentSlide + 1} / {slides.length}
+            </div>
+          </div>
+
+          {/* Миниатюры (опционально) */}
+          <div className="flex justify-center mt-6 space-x-4">
+            {slides.map((slide, index) => (
+              <button
+                key={slide.id}
+                onClick={() => goToSlide(index)}
+                className={`relative overflow-hidden rounded-lg transition-all duration-300 ${
+                  index === currentSlide
+                    ? "ring-2 ring-blue-500 ring-offset-2 transform scale-105"
+                    : "opacity-70 hover:opacity-100"
+                }`}
+              >
+                <img
+                  src={slide.image}
+                  alt={`Миниатюра ${slide.title}`}
+                  className="w-24 h-16 object-cover"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+      
         {/* Scroll Sections with 3D Model */}
         <section className="relative flex items-center justify-end min-h-screen px-8 md:px-16">
           <div className="w-full">
@@ -267,7 +413,7 @@ function App() {
                 <FaShieldAlt className="mr-2" />
                 <span className="font-semibold">Прочность</span>
               </div>
-              <h2 className="text-white text-5xl font-bold mb-6 leading-tight">
+              <h2 className="text-white text-4xl font-bold mb-6 leading-tight">
                 Созданы для приключений
               </h2>
               <p className="text-gray-300 text-xl leading-relaxed">
@@ -297,7 +443,6 @@ function App() {
           </div>
           <div className="hidden md:block w-1/2"></div>
         </section>
-
         <section className="relative flex items-center justify-between min-h-screen px-8 md:px-16">
           <div className="hidden md:block w-1/2"></div>
           <div className="w-full md:w-1/2">
@@ -306,7 +451,7 @@ function App() {
                 <FaBatteryFull className="mr-2" />
                 <span className="font-semibold">Автономность</span>
               </div>
-              <h2 className="text-white text-5xl font-bold mb-6 leading-tight">
+              <h2 className="text-white text-4xl font-bold mb-6 leading-tight">
                 Работает дольше, заряжается быстрее
               </h2>
               <p className="text-gray-300 text-xl leading-relaxed">
@@ -326,7 +471,6 @@ function App() {
             </div>
           </div>
         </section>
-
         <section className="relative flex items-center justify-between min-h-screen px-8 md:px-16">
           <div className="w-full md:w-1/2">
             <div className="max-w-lg">
@@ -334,8 +478,8 @@ function App() {
                 <GiWaterDrop className="mr-2" />
                 <span className="font-semibold">Экран</span>
               </div>
-              <h2 className="text-white text-5xl font-bold mb-6 leading-tight">
-                Самый яркий дисплей Apple
+              <h2 className="text-white text-4xl font-bold mb-6 leading-tight">
+                Самый яркий дисплей Eon Watch
               </h2>
               <p className="text-gray-300 text-xl leading-relaxed">
                 Дисплей 3000 нит обеспечивает кристально четкое изображение даже
@@ -344,11 +488,11 @@ function App() {
               </p>
               <div className="mt-8 grid grid-cols-2 gap-4">
                 <div className="bg-gray-800/50 rounded-xl p-4">
-                  <div className="text-white text-2xl font-bold">3000 нит</div>
+                  <div className="text-white text-xl font-bold">3000 нит</div>
                   <div className="text-gray-400 text-sm">Пиковая яркость</div>
                 </div>
                 <div className="bg-gray-800/50 rounded-xl p-4">
-                  <div className="text-white text-2xl font-bold">120 Гц</div>
+                  <div className="text-white text-xl font-bold">120 Гц</div>
                   <div className="text-gray-400 text-sm">
                     Частота обновления
                   </div>
@@ -358,15 +502,14 @@ function App() {
           </div>
           <div className="hidden md:block w-1/2"></div>
         </section>
-
         {/* CTA Section */}
-        <section className="relative flex items-center justify-center px-4">
+        <section className="relative flex items-center justify-center mt-8 px-4">
           <div className="max-w-4xl text-center">
-            <h2 className="text-white text-6xl font-bold mb-8">
+            <h2 className="text-white text-4xl font-bold mb-8">
               Готовы изменить свою жизнь?
             </h2>
-            <p className="text-gray-300 text-2xl mb-12 max-w-2xl mx-auto">
-              Apple Watch — это не просто часы, это ваш персональный тренер,
+            <p className="text-gray-300 text-xl mb-12 max-w-2xl mx-auto">
+              Eon Watch — это не просто часы, это ваш персональный тренер,
               доктор и помощник в одном устройстве
             </p>
 
@@ -393,7 +536,7 @@ function App() {
             </div>
 
             <button className="px-12 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded-full font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-0 animate-pulse-slow">
-              Купить сейчас от 39 990 ₽
+              Купить сейчас от 29 990 ₽
             </button>
 
             <p className="text-gray-500 mt-8 text-sm">
@@ -401,14 +544,10 @@ function App() {
             </p>
           </div>
         </section>
-
         {/* Footer */}
         <footer className="py-8 px-4 border-t border-white/10">
           <div className="max-w-6xl mx-auto text-center">
-            <p className="text-gray-500">
-              Apple Watch Series 9. Все права защищены. Apple и логотип Apple
-              являются товарными знаками Apple Inc.
-            </p>
+            <p className="text-gray-500">Eon Watch. Все права защищены.</p>
           </div>
         </footer>
       </Suspense>

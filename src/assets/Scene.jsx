@@ -23,7 +23,7 @@ export default function Experience({ progress }) {
          [3.5, 2.17, 3.7],
          [3.7, 0.6, 0.7],
          [2.3, 0.97, -4.2],
-         [0, 2.5, -1.6],
+         [-6.5, 1.17, 9.7],
        ];
       
       if (progress > 1) 
@@ -64,7 +64,7 @@ export default function Experience({ progress }) {
       {/* <OrbitControls  */}
 
       <PerspectiveCamera
-        fov={45}
+        fov={55}
         near={0.1}
         far={10000}
         makeDefault

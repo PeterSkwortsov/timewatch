@@ -7,7 +7,7 @@ export default function Model(props) {
     <group scale={[35, 35, 35]} {...props} dispose={null}>
       <group scale={0.01}>
         <ambientLight intensity={0.5} />
-        <directionalLight intensity={2} position={[0, 2, 2]} />
+        <directionalLight intensity={3} position={[0, 2, 2]} />
         <mesh
           castShadow
           receiveShadow
