@@ -22,7 +22,7 @@ export default function Experience({ progress }) {
        const positions = [
          [3.5, 2.17, 3.7],
          [3.7, 0.6, 0.7],
-         [2.3, 0.97, -4.2],
+         [2.3, 2.97, -4.2],
          [-6.5, 1.17, 9.7],
        ];
       
@@ -64,7 +64,7 @@ export default function Experience({ progress }) {
       {/* <OrbitControls  */}
 
       <PerspectiveCamera
-        fov={55}
+        fov={65}
         near={0.1}
         far={10000}
         makeDefault

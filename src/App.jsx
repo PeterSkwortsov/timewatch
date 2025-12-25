@@ -164,7 +164,7 @@ function App() {
     {
       icon: <FaMobileAlt className="text-green-500" />,
       title: "Интеграция",
-      description: "Полная синхронизация с экосистемой Eon Watch, быстрые ответы",
+      description: "Полная синхронизация с экосистемой Karelia X , быстрые ответы",
     },
     {
       icon: <WiThermometer className="text-pink-500" />,
@@ -194,7 +194,7 @@ function App() {
 
           <div className="relative z-10 text-center px-4 max-w-6xl">
             <h1 className="text-white text-7xl md:text-9xl font-bold mb-6 tracking-tighter">
-              Eon Watch
+              Karelia X 
             </h1>
 
             <p className="text-gray-300 text-lg md:text-xl font-light mt-8 max-w-3xl mx-auto leading-relaxed backdrop-blur-sm bg-black/30 p-6 rounded-2xl border border-white/10">
@@ -292,7 +292,7 @@ function App() {
                 </ul>
                 <div className="mt-8 pt-8 border-t border-white/10">
                   <p className="text-gray-400 text-sm">
-                    *По данным исследований пользователей Eon Watch за 2024 год
+                    *По данным исследований пользователей Karelia X  за 2024 год
                   </p>
                 </div>
               </div>
@@ -479,7 +479,7 @@ function App() {
                 <span className="font-semibold">Экран</span>
               </div>
               <h2 className="text-white text-4xl font-bold mb-6 leading-tight">
-                Самый яркий дисплей Eon Watch
+                Самый яркий дисплей Karelia X 
               </h2>
               <p className="text-gray-300 text-xl leading-relaxed">
                 Дисплей 3000 нит обеспечивает кристально четкое изображение даже
@@ -509,7 +509,7 @@ function App() {
               Готовы изменить свою жизнь?
             </h2>
             <p className="text-gray-300 text-xl mb-12 max-w-2xl mx-auto">
-              Eon Watch — это не просто часы, это ваш персональный тренер,
+              Karelia X  — это не просто часы, это ваш персональный тренер,
               доктор и помощник в одном устройстве
             </p>
 
@@ -545,9 +545,9 @@ function App() {
           </div>
         </section>
         {/* Footer */}
-        <footer className="py-8 px-4 border-t border-white/10">
+        <footer className="py-8 px-4">
           <div className="max-w-6xl mx-auto text-center">
-            <p className="text-gray-500">Eon Watch. Все права защищены.</p>
+            <p className="text-gray-500">Karelia X . Все права защищены.</p>
           </div>
         </footer>
       </Suspense>
